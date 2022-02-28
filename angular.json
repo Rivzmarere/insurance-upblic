@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "insurance": "apps/insurance",
+    "insurance-e2e": "apps/insurance-e2e"
+  }
+}

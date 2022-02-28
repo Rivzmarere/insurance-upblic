@@ -1,0 +1,28 @@
+{
+  "root": "apps/insurance-e2e",
+  "sourceRoot": "apps/insurance-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/insurance-e2e/cypress.json",
+        "devServerTarget": "insurance:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "insurance:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/insurance-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["insurance"]
+}

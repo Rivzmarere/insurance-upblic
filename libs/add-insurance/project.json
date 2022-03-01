@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/add-insurance",
+  "sourceRoot": "libs/add-insurance/src",
+  "prefix": "insurance",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/add-insurance"],
+      "options": {
+        "jestConfig": "libs/add-insurance/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/add-insurance/src/**/*.ts",
+          "libs/add-insurance/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

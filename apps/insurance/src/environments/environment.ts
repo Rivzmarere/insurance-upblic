@@ -4,6 +4,13 @@
 
 export const environment = {
   production: false,
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  version: require('../../../../package.json').version + '-dev',
+  auth: {
+    clientId: 'client_id',
+    clientSecret: 'client_secret'
+  },
+  baseUrl:''
 };
 
 /*

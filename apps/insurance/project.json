@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/insurance",
         "index": "apps/insurance/src/index.html",
@@ -18,7 +20,9 @@
           "apps/insurance/src/favicon.ico",
           "apps/insurance/src/assets"
         ],
-        "styles": ["apps/insurance/src/styles.scss"],
+        "styles": [
+          "apps/insurance/src/theme.less"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -83,7 +87,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/insurance"],
+      "outputs": [
+        "coverage/apps/insurance"
+      ],
       "options": {
         "jestConfig": "apps/insurance/jest.config.js",
         "passWithNoTests": true

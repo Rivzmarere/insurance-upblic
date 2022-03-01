@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/claim",
+  "sourceRoot": "libs/claim/src",
+  "prefix": "insurance",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/claim"],
+      "options": {
+        "jestConfig": "libs/claim/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/claim/src/**/*.ts",
+          "libs/claim/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

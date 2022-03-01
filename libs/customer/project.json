@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/customer",
+  "sourceRoot": "libs/customer/src",
+  "prefix": "insurance",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/customer"],
+      "options": {
+        "jestConfig": "libs/customer/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/customer/src/**/*.ts",
+          "libs/customer/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

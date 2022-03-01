@@ -14,7 +14,17 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@insurance/add-insurance": ["libs/add-insurance/src/index.ts"],
+      "@insurance/auth": ["libs/auth/src/index.ts"],
+      "@insurance/claim": ["libs/claim/src/index.ts"],
+      "@insurance/core": ["libs/core/src/index.ts"],
+      "@insurance/customer": ["libs/customer/src/index.ts"],
+      "@insurance/dashboard": ["libs/dashboard/src/index.ts"],
+      "@insurance/layout": ["libs/layout/src/index.ts"],
+      "@insurance/payments": ["libs/payments/src/index.ts"],
+      "@insurance/reports": ["libs/reports/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

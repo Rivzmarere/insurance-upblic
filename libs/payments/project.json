@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/payments",
+  "sourceRoot": "libs/payments/src",
+  "prefix": "insurance",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/payments"],
+      "options": {
+        "jestConfig": "libs/payments/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/payments/src/**/*.ts",
+          "libs/payments/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

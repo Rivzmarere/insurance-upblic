@@ -16,8 +16,21 @@ import {
   AUTH_OPTIONS_INJECTION_TOKEN,
   AuthenticationOptions
 } from '@insurance/core';
+import { IconDefinition  } from '@ant-design/icons-angular';
+import {
+  KeyOutline,
+  LockOutline,
+  UserOutline
+} from '@ant-design/icons-angular/icons';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
+
+const icons: IconDefinition[] = [
+  UserOutline,
+  LockOutline
+];
 
 const authOptions: AuthenticationOptions = {
   clientId: environment.auth.clientId,
@@ -42,6 +55,7 @@ registerLocaleData(en);
   imports: [ BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    NzIconModule.forChild(icons),
     CoreModule.forRoot(environment.production),
     JwtModule.forRoot({
       jwtOptionsProvider: {

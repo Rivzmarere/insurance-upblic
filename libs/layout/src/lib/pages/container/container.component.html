@@ -1,49 +1,85 @@
-<nz-layout>
+<nz-layout class="layoutBody">
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-    <div class="logo"></div>
+    <div class="logo">
+      <img src="assets/logo.png">
+    </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item>
         <i nz-icon nzType="file"></i>
         <span>Dashboard</span>
       </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="file"></i>
-        <span>Add Customer</span>
+      <li nz-submenu nzTitle="Customers" nzIcon="appstore">
+        <ul>
+          <li nz-menu-item routerLink="customer/create-customer">
+            <i nz-icon nzType="file"></i>
+            <span>Add Customer</span>
+          </li>
+          <li nz-menu-item routerLink="customer/view-customers">
+            <i nz-icon nzType="file"></i>
+            <span>View Customers</span>
+          </li>
+        </ul>
       </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="file"></i>
-        <span>Add Insurance</span>
+
+      <li nz-submenu nzTitle="Insurance" nzIcon="appstore">
+        <ul>
+          <li nz-menu-item routerLink="insurance/create-insurance">
+            <i nz-icon nzType="file"></i>
+            <span>Add Insurance</span>
+          </li>
+          <li nz-menu-item routerLink="insurance/view-insurance">
+            <i nz-icon nzType="file"></i>
+            <span>View Insurances</span>
+          </li>
+        </ul>
       </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="file"></i>
-        <span>View Payments</span>
+
+      <li nz-submenu nzTitle="Payments" nzIcon="appstore">
+        <ul>
+          <li nz-menu-item routerLink="payment/create-payment">
+            <i nz-icon nzType="file"></i>
+            <span>Make Payments</span>
+          </li>
+          <li nz-menu-item routerLink="payment/view-payments">
+            <i nz-icon nzType="file"></i>
+            <span>View Payments</span>
+          </li>
+        </ul>
       </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="file"></i>
-        <span>Claims</span>
+      <li nz-submenu nzTitle="Claim" nzIcon="appstore">
+        <ul>
+          <li nz-menu-item routerLink="claim/create-claim">
+            <i nz-icon nzType="file"></i>
+            <span>Create Claim</span>
+          </li>
+          <li nz-menu-item routerLink="claim/view-claims">
+            <i nz-icon nzType="file"></i>
+            <span>View Claims</span>
+          </li>
+        </ul>
       </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="file"></i>
-        <span>Reports</span>
+      <li nz-submenu nzTitle="Parametrs" nzIcon="appstore">
+        <ul>
+          <li nz-menu-item>
+            <i nz-icon nzType="file"></i>
+            <span>Roles</span>
+          </li>
+        </ul>
       </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="file"></i>
-        <span>Parameters</span>
-      </li>
+
     </ul>
   </nz-sider>
   <nz-layout>
     <nz-header>
       <i
-        class="trigger"
+class="trigger"
         nz-icon
-        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
         (click)="isCollapsed = !isCollapsed"
       ></i>
     </nz-header>
     <nz-content>
       <div class="inner-content">
-        <router-outlet></router-outlet>
+       <router-outlet></router-outlet>
       </div>
     </nz-content>
     <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>

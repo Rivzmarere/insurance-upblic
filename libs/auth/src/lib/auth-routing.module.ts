@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@insurance/core';
 import { LoginComponent } from './pages/login/login.component';
+import { ContainerComponent } from './pages/container/container.component';
+import { RegisterComponent } from './pages/register/register.component';
 const routes: Routes = [
   {
-    path: '', component: CoverComponent,
+    path: '', component: ContainerComponent,
     children: [
       { path: 'login', component: LoginComponent },
-      // { path: 'forgot-password', component: ForgotPasswordComponent },
+      { path: 'register', component: RegisterComponent },
     ]
   }
 
@@ -15,7 +16,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ],
   exports: [RouterModule]
 })

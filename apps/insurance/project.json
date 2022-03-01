@@ -18,12 +18,20 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/insurance/src/favicon.ico",
-          "apps/insurance/src/assets"
+          "apps/insurance/src/assets",
+          {
+            "glob": "**/*",
+            "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+            "output": "/assets/"
+          }
         ],
         "styles": [
-          "apps/insurance/src/theme.less"
+          "apps/insurance/src/theme.less",
+          "node_modules/bootstrap/dist/css/bootstrap.css"
         ],
-        "scripts": []
+        "scripts": [
+          "node_modules/bootstrap/dist/js/bootstrap.min.js"
+        ]
       },
       "configurations": {
         "production": {

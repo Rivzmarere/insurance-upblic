@@ -9,12 +9,13 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired     >Type</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24"     >
       <nz-select
-      [nzMaxTagCount]="3"
+      formControlName="type"
       [nzMaxTagPlaceholder]="tagPlaceHolder"
-      nzMode="multiple"
       nzPlaceHolder="Please select"
     >
-      <nz-option *ngFor="let item of listOfOption" [nzLabel]="item" [nzValue]="item"></nz-option>
+    <nz-option nzValue="3rd-Part" nzLabel="3rd-Part"></nz-option>
+    <nz-option nzValue="3rd-Part-Natural" nzLabel="3rd-Part-Natural"></nz-option>
+    <nz-option nzValue="Full cover" nzLabel="Full cover"></nz-option>
     </nz-select>
     </nz-form-control>
   </nz-form-item>
@@ -28,12 +29,12 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired     >Period</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24"     >
       <nz-select
-      [nzMaxTagCount]="3"
-      [nzMaxTagPlaceholder]="tagPlaceHolder"
-      nzMode="multiple"
+      formControlName="period"
       nzPlaceHolder="Please select"
     >
-      <nz-option *ngFor="let item of listOfOption" [nzLabel]="item" [nzValue]="item"></nz-option>
+    <nz-option nzValue="4-Months" nzLabel="4-Months"></nz-option>
+    <nz-option nzValue="8-Months" nzLabel="8-Months"></nz-option>
+    <nz-option nzValue="1-Year" nzLabel="1-Year"></nz-option>
     </nz-select>
     </nz-form-control>
   </nz-form-item>
@@ -41,14 +42,19 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired     >model</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" >
       <nz-select
-      [nzMaxTagCount]="3"
+      formControlName="model"
       [nzMaxTagPlaceholder]="tagPlaceHolder"
-      nzMode="multiple"
       nzPlaceHolder="Please select"
     >
-      <nz-option *ngFor="let item of listOfOption" [nzLabel]="item" [nzValue]="item"></nz-option>
+    <nz-option nzValue="Van" nzLabel="Van"></nz-option>
+    <nz-option nzValue="Sedan" nzLabel="Sedan"></nz-option>
+    <nz-option nzValue="Lorry" nzLabel="Lorry"></nz-option>
     </nz-select>
     <ng-template #tagPlaceHolder let-selectedList>and {{ selectedList.length }} more selected</ng-template>
     </nz-form-control>
   </nz-form-item>
+
+  <button nz-button nzType="default" >
+    <span>submit</span>
+  </button>
 </form>

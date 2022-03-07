@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
+import { NGXLogger } from 'ngx-logger';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { InsuranceService } from '../../service/insurance.service';
 
 @Component({
   selector: 'insurance-create-customer',
@@ -18,23 +21,16 @@ export class CreateCustomerComponent implements OnInit {
   };
 
   submitForm(): void {
-
-    const children: string[] = [];
-    for (let i = 10; i < 36; i++) {
-      children.push(`${i.toString(36)}${i}`);
-    }
-    this.listOfOption = children;
-
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
-    } else {
-      Object.values(this.validateForm.controls).forEach(control => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
+    console.log(this.validateForm.value)
+    this.service.createInsurance(this.validateForm.value).subscribe(res => {
+      // this.PurchasesFacade.createNewPurchase(requestBody);
+        this.uiLoader.stop();
+      },
+      error => {
+        this.logger.error(error);
+        this.uiLoader.stop();
       });
-    }
+
   }
 
 
@@ -42,20 +38,21 @@ export class CreateCustomerComponent implements OnInit {
     e.preventDefault();
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private service: InsuranceService,   private logger: NGXLogger,
+    private uiLoader: NgxUiLoaderService,) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       name: [null, [Validators.email, Validators.required]],
       type: [null, [Validators.required]],
       amount: [null, [Validators.required]],
-      Period: [null, [Validators.required]],
-      phoneNumberPrefix: ['+86'],
-      phoneNumber: [null, [Validators.required]],
-      website: [null, [Validators.required]],
-      captcha: [null, [Validators.required]],
-      agree: [false]
+      period: [null, [Validators.required]],
+      model: [null, [Validators.required]],
     });
+  }
+
+  save(){
+    this.service.createInsurance(this.validateForm.value)
   }
 
 }

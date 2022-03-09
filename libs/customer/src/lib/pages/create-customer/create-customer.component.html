@@ -1,12 +1,14 @@
 <nz-steps [nzCurrent]="current">
   <nz-step nzTitle="Personal Details"></nz-step>
-  <nz-step nzTitle="Vehicle documents"></nz-step>
+  <nz-step nzTitle=" Documents"></nz-step>
   <nz-step nzTitle="finished"></nz-step>
 </nz-steps>
 
 <div  class="steps-content">
+  <form nz-form [formGroup]="Form1">
   <div *ngIf="formpage">
-  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Name</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
@@ -54,69 +56,27 @@
       <input nz-input formControlName="email"     />
     </nz-form-control>
   </nz-form-item>
-</form>
 </div>
 
 <div *ngIf="documentspage">
-  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Drivers licence</nz-form-label>
-      <nz-upload
-  nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-  [nzHeaders]="{ authorization: 'authorization-text' }"
-  (nzChange)="handleChange($event)"
->
-  <button nz-button>
-    <i nz-icon nzType="upload"></i>
-    Click to Upload
-  </button>
-</nz-upload>
-
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">ID</nz-form-label>
-      <nz-upload
-  nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-  [nzHeaders]="{ authorization: 'authorization-text' }"
-  (nzChange)="handleChange($event)"
->
-  <button nz-button>
-    <i nz-icon nzType="upload"></i>
-    Click to Upload
-  </button>
-</nz-upload>
-
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Registration book</nz-form-label>
-      <nz-upload
-  nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-  [nzHeaders]="{ authorization: 'authorization-text' }"
-  (nzChange)="handleChange($event)"
->
-  <button nz-button>
-    <i nz-icon nzType="upload"></i>
-    Click to Upload
-  </button>
-</nz-upload>
-
-    </nz-form-item>
-
-  </form>
-
-
+  <div style="text-align: center">
+      <div>
+        <input type="file" name="image" (change)="selectImage($event)" />
+      </div>
+      <br>
+  </div>
 
 </div>
-
+  </form>
 </div>
 <div class="steps-action">
   <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
     <span>Previous</span>
   </button>
-  <button nz-button nzType="default" (click)="next()" *ngIf="current < 2">
+  <button nz-button nzType="default" (click)="next()" *ngIf="current < 1">
     <span>Next</span>
   </button>
-  <button nz-button nzType="primary" (click)="done()" *ngIf="current === 2">
+  <button nz-button nzType="primary" (click)="onSubmit()" *ngIf="current === 1">
     <span>Done</span>
   </button>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../../service/customer.service';
 
 interface Person {
   key: string;
@@ -14,6 +15,7 @@ interface Person {
   styleUrls: ['./view-cutomers.component.scss']
 })
 export class ViewCutomersComponent implements OnInit {
+  data:any= []
 
   listOfData: Person[] = [
     {
@@ -36,9 +38,21 @@ export class ViewCutomersComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private service: CustomerService) { }
 
   ngOnInit(): void {
+    this.getCustomers()
+  }
+
+
+  getCustomers(){
+    this.service.getAllCustomers().subscribe(res=>{
+     this.data = res
+    })
+  }
+
+  getUser(event:any){
+    console.log(event)
   }
 
 }

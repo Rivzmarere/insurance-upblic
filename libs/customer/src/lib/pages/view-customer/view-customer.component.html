@@ -1,0 +1,142 @@
+<div nz-row>
+  <div nz-col nzSpan="12">
+    <button nz-button (click)="showModal()"> Add Car</button>
+    <nz-modal
+      [(nzVisible)]="isVisible"
+      [nzTitle]="modalTitle"
+      [nzContent]="modalContent"
+      [nzFooter]="modalFooter"
+      (nzOnCancel)="handleCancel()"
+    >
+      <ng-template #modalTitle>Custom Modal Title</ng-template>
+
+      <ng-template #modalContent>
+        <form nz-form [formGroup]="Form2">
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Name</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+              <input nz-input formControlName="name"  />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Type</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+              <input nz-input formControlName="type"  />
+            </nz-form-control>
+          </nz-form-item> <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">RegNumber</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+              <input nz-input formControlName="regNumber"  />
+            </nz-form-control>
+          </nz-form-item> <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Year</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+              <input nz-input formControlName="year"     />
+            </nz-form-control>
+          </nz-form-item> <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Country</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+              <input nz-input formControlName="country"     />
+            </nz-form-control>
+          </nz-form-item> <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="City">Date Registered</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+              <input nz-input formControlName="dateRegistered"     />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label  nzFor="gender" nzRequired>Gender</nz-form-label>
+            <nz-form-control [nzSpan]="14" nzErrorTip="Please select your gender!">
+              <nz-select
+                id="gender"
+                formControlName="insurance"
+                nzPlaceHolder="Select a option and change input text above"
+              >
+                <nz-option *ngFor="let data of insurance" nzValue="{{data.name}}" nzLabel="{{data.name}}"> </nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </ng-template>
+
+      <ng-template #modalFooter>
+        <span>Modal Footer:</span>
+        <button nz-button nzType="default" (click)="handleCancel()">Custom Callback</button>
+        <button nz-button nzType="primary" (click)="handleOk()">Custom Submit</button>
+      </ng-template>
+    </nz-modal>
+    <form nz-form [formGroup]="Form1">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Name</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+          <input nz-input formControlName="name"  />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">SUrname</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+          <input nz-input formControlName="surname"  />
+        </nz-form-control>
+      </nz-form-item> <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">D.O.B</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+          <input nz-input formControlName="dateOfBirth"  />
+        </nz-form-control>
+      </nz-form-item> <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">I.D Number</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+          <input nz-input formControlName="idNumber"     />
+        </nz-form-control>
+      </nz-form-item> <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Address</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+          <input nz-input formControlName="address"     />
+        </nz-form-control>
+      </nz-form-item> <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="City">E-mail</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+          <input nz-input formControlName="email"     />
+        </nz-form-control>
+      </nz-form-item> <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Occupation</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+          <input nz-input formControlName="occupation"     />
+        </nz-form-control>
+      </nz-form-item> <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Phone Number</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+          <input nz-input formControlName="phoneNumber"     />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    </div>
+  <div nz-col nzSpan="12">
+
+    <nz-table #basicTable>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>RegNumber</th>
+          <th>Type</th>
+          <th>Date Registered</th>
+          <th>Year</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of cars">
+          <td>{{ data.name }}</td>
+          <td>{{ data.regNumber }}</td>
+          <td>{{ data.type }}</td>
+          <td>{{ data.dateRegistered }}</td>
+          <td>{{ data.year }}</td>
+          <td><button nz-button >Remove</button></td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+
+
+
+  </div>
+</div>

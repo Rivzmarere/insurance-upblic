@@ -8,12 +8,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
-
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { ViewCarDetailsComponent } from './view-car-details/view-car-details.component';
+import { RouterModule } from '@angular/router';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 @NgModule({
   declarations: [
     CreatePaymentComponent,
-    ViewPaymentsComponent
+    ViewPaymentsComponent,
+    ViewCarDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +27,10 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
    ReactiveFormsModule,
    NzTableModule,
    FormsModule,
-   NzDividerModule
+   NzDividerModule,
+   NzButtonModule,
+   RouterModule,
+   NzModalModule
   ]
 })
 export class PagesModule { }

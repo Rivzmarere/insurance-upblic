@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     ReactiveFormsModule,
     NzTableModule,
     FormsModule,
-    NzDividerModule
+    NzDividerModule,
+    NzButtonModule
   ]
 })
 export class PagesModule { }

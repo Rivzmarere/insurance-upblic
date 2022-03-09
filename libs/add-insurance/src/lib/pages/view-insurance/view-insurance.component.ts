@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { resolve } from 'path';
+import { InsuranceService } from '../../service/insurance.service';
 interface Person {
   key: string;
   name: string;
@@ -13,6 +15,8 @@ interface Person {
   styleUrls: ['./view-insurance.component.scss']
 })
 export class ViewInsuranceComponent implements OnInit {
+
+  data:any= []
 
   listOfData: Person[] = [
     {
@@ -35,9 +39,17 @@ export class ViewInsuranceComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private service: InsuranceService,) { }
 
   ngOnInit(): void {
+    this.getInsurances()
+  }
+
+
+  getInsurances(){
+    this.service.getAllInsurances().subscribe(res=>{
+     this.data = res
+    })
   }
 
 }

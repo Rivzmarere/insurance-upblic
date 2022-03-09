@@ -1,44 +1,22 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
-interface Person {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-}
+import { PaymentsService } from '../../service/payments.service';
 @Component({
   selector: 'insurance-create-payment',
   templateUrl: './create-payment.component.html',
   styleUrls: ['./create-payment.component.scss']
 })
 export class CreatePaymentComponent implements OnInit {
-  listOfData: Person[] = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    }
-  ];
+searchText:string = ''
 
   validateForm!: FormGroup;
   captchaTooltipIcon: NzFormTooltipIcon = {
     type: 'info-circle',
     theme: 'twotone'
   };
+  result: any = [];
 
   submitForm(): void {
     if (this.validateForm.valid) {
@@ -58,20 +36,19 @@ export class CreatePaymentComponent implements OnInit {
     e.preventDefault();
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private service:PaymentsService) {}
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      email: [null, [Validators.email, Validators.required]],
-      password: [null, [Validators.required]],
-      checkPassword: [null, [Validators.required]],
-      nickname: [null, [Validators.required]],
-      phoneNumberPrefix: ['+86'],
-      phoneNumber: [null, [Validators.required]],
-      website: [null, [Validators.required]],
-      captcha: [null, [Validators.required]],
-      agree: [false]
-    });
+
+  }
+
+  search(){
+    console.log(this.searchText)
+    this.service.getCarByRegNumber(this.searchText).subscribe((data) => {
+      this.result = [data]
+    })
+
+
   }
 
 }

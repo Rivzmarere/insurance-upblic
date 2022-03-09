@@ -2,21 +2,32 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Age</th>
-      <th>Address</th>
+      <th>Surname</th>
+      <th>ID Number</th>
+      <th>City</th>
+      <th>Phone Number</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of basicTable.data">
+    <tr *ngFor="let data of data" routerLink='/customer/view-customer/{{data._id}}'>
       <td>{{ data.name }}</td>
-      <td>{{ data.age }}</td>
-      <td>{{ data.address }}</td>
-      <td>
-        <a>Action 一 {{ data.name }}</a>
-        <nz-divider nzType="vertical"></nz-divider>
-        <a>Delete</a>
-      </td>
+      <td>{{ data.surname }}</td>
+      <td>{{ data.idNumber }}</td>
+      <td>{{ data.city }}</td>
+      <td>{{ data.phoneNumber }}</td>
+      <td><button nz-button >edit</button></td>
     </tr>
   </tbody>
 </nz-table>
+
+
+<!-- address: "dfdfddf"
+city: "fdfdfdfdf"
+dateOfBirth: "dfdfddf"
+idNumber: "dfdfdfdfd"
+name: "ddfdfdfg"
+occupation: "dfdfdfdfdf"
+path: "uploads/FunOfHeuristic_image.png"
+phoneNumber: "dffdff"
+surname: "dfdffdf" -->

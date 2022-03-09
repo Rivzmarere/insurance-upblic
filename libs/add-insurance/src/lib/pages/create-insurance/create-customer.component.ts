@@ -43,7 +43,7 @@ export class CreateCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      name: [null, [Validators.email, Validators.required]],
+      name: [null, [ Validators.required]],
       type: [null, [Validators.required]],
       amount: [null, [Validators.required]],
       period: [null, [Validators.required]],

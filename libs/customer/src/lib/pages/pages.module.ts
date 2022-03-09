@@ -12,13 +12,17 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzMessageService } from 'ng-zorro-antd/message';
-
-
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import {RouterModule} from '@angular/router';
+import { ViewCustomerComponent } from './view-customer/view-customer.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 @NgModule({
   declarations: [
     CreateCustomerComponent,
     ViewCutomersComponent,
+    ViewCustomerComponent,
 
   ],
   imports: [
@@ -33,6 +37,12 @@ import { NzMessageService } from 'ng-zorro-antd/message';
     NzStepsModule,
     NzGridModule,
     NzUploadModule,
+    NzButtonModule,
+    NzIconModule,
+    RouterModule,
+    NzModalModule,
+    
+
   ],
   providers:[
     NzMessageService

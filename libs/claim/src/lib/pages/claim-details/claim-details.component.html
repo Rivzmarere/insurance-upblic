@@ -1,0 +1,107 @@
+<div nz-row>
+<div nz-col nzSpan="12">
+  <form nz-form [formGroup]="Form2">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="name"  />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Type</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="type"  />
+      </nz-form-control>
+    </nz-form-item> <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">RegNumber</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="regNumber"  />
+      </nz-form-control>
+    </nz-form-item> <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Year</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="year"     />
+      </nz-form-control>
+    </nz-form-item> <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="City">Date Registered</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="dateRegistered"     />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="City">Insurance Cover</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="insurance"     />
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+
+  <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Process Claim</span></button>
+      <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+        <ng-container *nzModalContent>
+          <form nz-form [formGroup]="paymentForm">
+            <nz-form-item>
+              <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Name </nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                <input nz-input formControlName="name"  />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="City">Insurance Cover</nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                <input nz-input formControlName="insurance"     />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="City">Amount</nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                <input nz-input formControlName="amount"     />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="City">Select Payment</nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                <nz-select
+                  id="gender"
+                  formControlName="paymentMethod"
+                  nzPlaceHolder="Select Payment Method"
+                >
+                  <nz-option   nzValue="Ecocash" nzLabel="Ecocash"> </nz-option>
+                  <nz-option  nzValue="One-Money" nzLabel="One-Money"> </nz-option>
+                  <nz-option  nzValue="Telecash" nzLabel="Telecash"> </nz-option>
+                  <nz-option  nzValue="Swipe" nzLabel="Swipe"> </nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </form>
+        </ng-container>
+      </nz-modal>
+
+</div>
+
+<div nz-col nzSpan="12">
+  <nz-table #basicTable>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>RegNumber</th>
+        <th>Type</th>
+        <th>Date Registered</th>
+        <th>Year</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of cars">
+        <td>{{ data.name }}</td>
+        <td>{{ data.regNumber }}</td>
+        <td>{{ data.type }}</td>
+        <td>{{ data.dateRegistered }}</td>
+        <td>{{ data.year }}</td>
+        <td><button nz-button >Remove</button></td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+</div>
+</div>

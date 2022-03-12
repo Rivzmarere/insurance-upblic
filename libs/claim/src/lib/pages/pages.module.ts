@@ -8,12 +8,16 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzFormModule } from 'ng-zorro-antd/form';
-
+import { ClaimDetailsComponent } from './claim-details/claim-details.component';
+import { RouterModule } from '@angular/router';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
     CreateClaimComponent,
-    ViewClaimsComponent
+    ViewClaimsComponent,
+    ClaimDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +27,10 @@ import { NzFormModule } from 'ng-zorro-antd/form';
    ReactiveFormsModule,
    NzTableModule,
    FormsModule,
-   NzDividerModule
+   NzDividerModule,
+   NzButtonModule,
+   NzModalModule,
+   RouterModule
   ]
 })
 export class PagesModule { }

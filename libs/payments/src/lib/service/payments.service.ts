@@ -11,17 +11,22 @@ export class PaymentsService {
 
   createPayment(BeneficiaryDetails: any) {
     return this.http.post(
-      `http://localhost:1000/insurance/post-insurance`,
+      `http://localhost:1000/payment/post-payment`,
       BeneficiaryDetails
     );
   }
   getAllPayments() {
-    return this.http.get(`http://localhost:1000/`);
+    return this.http.get(`http://localhost:1000/payment/view-all-payements`);
   }
 
   getCarByRegNumber(regNumber: any) {
     return this.http.get(
       `http://localhost:1000/car/get-car-by-regNumber/${regNumber}`
+    );
+  }
+  getPaymentsByCarID(carId: any) {
+    return this.http.get(
+      `http://localhost:1000/car/get-car-by-regNumber/${carId}`
     );
   }
 

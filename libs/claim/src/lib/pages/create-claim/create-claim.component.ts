@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { PaymentsService } from '../../../../../payments/src/lib/service/payments.service';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 
 interface Person {
@@ -16,10 +19,10 @@ interface Person {
   styleUrls: ['./create-claim.component.scss']
 })
 export class CreateClaimComponent implements OnInit {
+  searchText:string = '';
+  result: any = [];
 
-  listOfData: Person[] = [
-   
-  ];
+
 
 
   validateForm!: FormGroup;
@@ -46,7 +49,7 @@ export class CreateClaimComponent implements OnInit {
     e.preventDefault();
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,  private service:PaymentsService) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -60,6 +63,14 @@ export class CreateClaimComponent implements OnInit {
       captcha: [null, [Validators.required]],
       agree: [false]
     });
+  }
+
+  search(){
+    console.log(this.searchText)
+    this.service.getCarByRegNumber(this.searchText).subscribe((data) => {
+      this.result = [data]
+    })
+
   }
 
 }

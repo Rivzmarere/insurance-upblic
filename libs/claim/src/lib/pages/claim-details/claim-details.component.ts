@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { PaymentsService } from '../../service/payments.service';
+import { PaymentsService } from '../../../../../payments/src/lib/service/payments.service';
 
 @Component({
-  selector: 'insurance-view-car-details',
-  templateUrl: './view-car-details.component.html',
-  styleUrls: ['./view-car-details.component.scss']
+  selector: 'insurance-claim-details',
+  templateUrl: './claim-details.component.html',
+  styleUrls: ['./claim-details.component.scss']
 })
-export class ViewCarDetailsComponent implements OnInit {
+export class ClaimDetailsComponent implements OnInit {
   insuranceAmount: any;
   isVisible = false;
   id: any;
@@ -16,6 +16,7 @@ export class ViewCarDetailsComponent implements OnInit {
   insurance: any;
   ownerId: any;
   vehcleIdNumber: any;
+  cars: any = [];
 
   Form2: FormGroup = this.fb.group({
     name: [{value:'', disabled: true}, [Validators.required]],
@@ -50,16 +51,13 @@ export class ViewCarDetailsComponent implements OnInit {
 
 
   constructor(private router: ActivatedRoute,private service: PaymentsService,private fb: FormBuilder) {
-    this.id = this.router.snapshot.params['id'];
-  }
+    this.id = this.router.snapshot.params['id']
+   }
 
   ngOnInit(): void {
     this.Form2
-    // this.paymentSubmitForm
     this.getCarById()
-
   }
-
 
 
   getCarById(){
@@ -116,7 +114,10 @@ export class ViewCarDetailsComponent implements OnInit {
     this.isVisible = false;
   }
 
-
-
+  getPaymentsByCarID(){
+    this.service.getPaymentsByCarID(this.id).subscribe(res=>{
+      this.cars = res
+    })
+  }
 
 }

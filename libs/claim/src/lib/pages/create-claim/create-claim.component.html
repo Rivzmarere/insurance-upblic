@@ -1,33 +1,29 @@
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">RegNumber</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
-      <input nz-input formControlName="email" id="email" />
-    </nz-form-control>
-  </nz-form-item>
-</form>
+<div >
+  <input nz-input size="40" [(ngModel)]="searchText" id="email" />
+<button nz-button (click)="search()"> Search</button>
+</div>
 
 <div>
-  <nz-table #basicTable [nzData]="listOfData">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Address</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.name }}</td>
-        <td>{{ data.age }}</td>
-        <td>{{ data.address }}</td>
-        <td>
-          <a>Action 一 {{ data.name }}</a>
-          <nz-divider nzType="vertical"></nz-divider>
-          <a>Delete</a>
-        </td>
-      </tr>
-    </tbody>
-  </nz-table>
+<nz-table #basicTable>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>RegNumber</th>
+    <th>Type</th>
+    <th>Date Registered</th>
+    <th>Year</th>
+    <th>Action</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let data of result" routerLink='/claim/make-claim/{{data._id}}'>
+    <td>{{ data.name }}</td>
+    <td>{{ data.regNumber }}</td>
+    <td>{{ data.type }}</td>
+    <td>{{ data.dateRegistered }}</td>
+    <td>{{ data.year }}</td>
+    <td><button nz-button >Make Payment</button></td>
+  </tr>
+</tbody>
+</nz-table>
 </div>

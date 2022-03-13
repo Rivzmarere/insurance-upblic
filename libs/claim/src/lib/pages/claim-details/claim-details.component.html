@@ -84,21 +84,19 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>RegNumber</th>
-        <th>Type</th>
-        <th>Date Registered</th>
-        <th>Year</th>
-        <th>Action</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Payment Method</th>
+        <th>Period</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let data of cars">
         <td>{{ data.name }}</td>
-        <td>{{ data.regNumber }}</td>
-        <td>{{ data.type }}</td>
-        <td>{{ data.dateRegistered }}</td>
-        <td>{{ data.year }}</td>
-        <td><button nz-button >Remove</button></td>
+        <td>{{ data.date }}</td>
+        <td>{{ data.amount }}</td>
+        <td>{{ data.paymentMethod }}</td>
+        <td>{{ period }}</td>
       </tr>
     </tbody>
   </nz-table>

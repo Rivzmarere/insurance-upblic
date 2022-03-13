@@ -26,7 +26,7 @@ export class PaymentsService {
   }
   getPaymentsByCarID(carId: any) {
     return this.http.get(
-      `http://localhost:1000/car/get-car-by-regNumber/${carId}`
+      `http://localhost:1000/payment/get-payment-by-vehcleId/${carId}`
     );
   }
 

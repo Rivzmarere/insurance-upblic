@@ -48,6 +48,7 @@ export class ClaimDetailsComponent implements OnInit {
 
   });
   carDetails: any;
+  period: any;
 
 
   constructor(private router: ActivatedRoute,private service: PaymentsService,private fb: FormBuilder) {
@@ -57,6 +58,7 @@ export class ClaimDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.Form2
     this.getCarById()
+    this.getPaymentsByCarID()
   }
 
 
@@ -82,6 +84,7 @@ export class ClaimDetailsComponent implements OnInit {
       this.Form2.controls["insurance"].setValue(details.insurance)
       this.service.getInsuranceByName(details.insurance).subscribe((res:any) =>{
         this.paymentForm.controls["amount"].setValue(res.amount)
+        this.period = res.period
 
        })
 

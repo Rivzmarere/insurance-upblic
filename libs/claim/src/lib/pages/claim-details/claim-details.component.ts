@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { PaymentsService } from '../../../../../payments/src/lib/service/payments.service';
 
 @Component({
@@ -51,7 +52,7 @@ export class ClaimDetailsComponent implements OnInit {
   period: any;
 
 
-  constructor(private router: ActivatedRoute,private service: PaymentsService,private fb: FormBuilder) {
+  constructor(private notification: NzNotificationService,private router: ActivatedRoute,private service: PaymentsService,private fb: FormBuilder) {
     this.id = this.router.snapshot.params['id']
    }
 
@@ -67,6 +68,10 @@ export class ClaimDetailsComponent implements OnInit {
       this.paymentForm.controls["ownerId"].setValue(res.ownerId)
       this.paymentForm.controls["vechleId"].setValue(res._id)
       this.showDetails(res)
+      this.notification.success(
+        'Success',
+        'Succefully Retrived Customer.'
+      );
 
     })
 
@@ -106,6 +111,15 @@ export class ClaimDetailsComponent implements OnInit {
       this.paymentSubmitForm.controls["vechleId"].setValue(this.paymentForm.value.vechleId)
       this.service.createPayment(this.paymentForm.getRawValue()).subscribe(res=>{
         console.log(res)
+        this.notification.success(
+          'Success',
+          'Succefully Retrived Customer.'
+        );
+      },(err)=>{
+        this.notification.error(
+          'Error',
+         err
+        );
       })
 
 
@@ -120,6 +134,15 @@ export class ClaimDetailsComponent implements OnInit {
   getPaymentsByCarID(){
     this.service.getPaymentsByCarID(this.id).subscribe(res=>{
       this.cars = res
+      this.notification.success(
+        'Success',
+        'Succefully Retrived Payments.'
+      );
+    },(err)=>{
+      this.notification.error(
+        'Error',
+        err
+      );
     })
   }
 

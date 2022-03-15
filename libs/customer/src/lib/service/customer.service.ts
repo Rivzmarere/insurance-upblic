@@ -27,9 +27,20 @@ export class CustomerService {
       `http://localhost:1000/car/get-car-by-owner-id/${OwnerId}`
     );
   }
+  getCarbyId(CarId: any) {
+    return this.http.get(
+      `http://localhost:1000/car/get-car-by-id/${CarId}`
+    );
+  }
   uploadImage(BeneficiaryDetails: any) {
     return this.http.post(
       `http://localhost:1000/file`,
+      BeneficiaryDetails
+    );
+  }
+  updateVehcleById(id:any ,BeneficiaryDetails: any) {
+    return this.http.put(
+      `http://localhost:1000/car/update-car/${id}`,
       BeneficiaryDetails
     );
   }

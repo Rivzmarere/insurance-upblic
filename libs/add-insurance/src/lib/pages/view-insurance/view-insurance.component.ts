@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { resolve } from 'path';
 import { InsuranceService } from '../../service/insurance.service';
 interface Person {
@@ -39,7 +40,7 @@ export class ViewInsuranceComponent implements OnInit {
     }
   ];
 
-  constructor(private service: InsuranceService,) { }
+  constructor(private notification: NzNotificationService,private service: InsuranceService,) { }
 
   ngOnInit(): void {
     this.getInsurances()
@@ -49,6 +50,15 @@ export class ViewInsuranceComponent implements OnInit {
   getInsurances(){
     this.service.getAllInsurances().subscribe(res=>{
      this.data = res
+     this.notification.success(
+      'Success',
+      'Succefully Retrived Insurances.'
+    );
+    },(err)=>{
+      this.notification.success(
+        'Eror',
+        err
+      );
     })
   }
 

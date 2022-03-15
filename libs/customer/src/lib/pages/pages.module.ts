@@ -17,6 +17,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import {RouterModule} from '@angular/router';
 import { ViewCustomerComponent } from './view-customer/view-customer.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @NgModule({
   declarations: [
@@ -41,11 +44,10 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzIconModule,
     RouterModule,
     NzModalModule,
-    
+    NzPopoverModule,
+    NzDropDownModule,
 
-  ],
-  providers:[
-    NzMessageService
+
   ]
 })
 export class PagesModule { }

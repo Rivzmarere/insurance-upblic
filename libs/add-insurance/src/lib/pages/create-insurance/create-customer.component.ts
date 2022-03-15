@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NGXLogger } from 'ngx-logger';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { InsuranceService } from '../../service/insurance.service';
@@ -38,7 +39,7 @@ export class CreateCustomerComponent implements OnInit {
     e.preventDefault();
   }
 
-  constructor(private fb: FormBuilder, private service: InsuranceService,   private logger: NGXLogger,
+  constructor(private notification: NzNotificationService,private fb: FormBuilder, private service: InsuranceService,   private logger: NGXLogger,
     private uiLoader: NgxUiLoaderService,) {}
 
   ngOnInit(): void {
@@ -52,7 +53,17 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   save(){
-    this.service.createInsurance(this.validateForm.value)
+    this.service.createInsurance(this.validateForm.value).subscribe(res => {
+      this.notification.success(
+        'Success',
+        'Succefully Created the Insurance.'
+      );
+    }, (err)=>{
+      this.notification.error(
+        'Error',
+        err
+      );
+    })
   }
 
 }

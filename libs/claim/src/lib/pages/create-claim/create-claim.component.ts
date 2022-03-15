@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PaymentsService } from '../../../../../payments/src/lib/service/payments.service';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 interface Person {
   key: string;
@@ -49,7 +50,7 @@ export class CreateClaimComponent implements OnInit {
     e.preventDefault();
   }
 
-  constructor(private fb: FormBuilder,  private service:PaymentsService) {}
+  constructor(private notification: NzNotificationService,private fb: FormBuilder,  private service:PaymentsService) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -69,6 +70,15 @@ export class CreateClaimComponent implements OnInit {
     console.log(this.searchText)
     this.service.getCarByRegNumber(this.searchText).subscribe((data) => {
       this.result = [data]
+      this.notification.success(
+        'Success',
+        'Succefully Retrived Car.'
+      );
+    },(err)=>{
+      this.notification.error(
+        'Error',
+        err
+      );
     })
 
   }

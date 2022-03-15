@@ -7,6 +7,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { NGXLogger } from 'ngx-logger';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'insurance-create-customer',
@@ -80,7 +81,7 @@ export class CreateCustomerComponent implements OnInit {
       }
     }}
 
-  constructor(private fb: FormBuilder,private service: CustomerService,   private logger: NGXLogger,
+  constructor(private notification: NzNotificationService,private fb: FormBuilder,private service: CustomerService,   private logger: NGXLogger,
     private uiLoader: NgxUiLoaderService, private msg: NzMessageService) {}
 
     ngOnInit(){
@@ -107,8 +108,17 @@ export class CreateCustomerComponent implements OnInit {
 
       this.service.uploadImage(formData).subscribe((res:any) =>{
         this.filePath = res.path
+        this.notification.success(
+          'Success',
+          'Image Succefully Upload.'
+        );
         this.save()
 
+      },(err)=>{
+        this.notification.error(
+          'Error',
+          err
+        );
       }
       );
 
@@ -136,6 +146,16 @@ export class CreateCustomerComponent implements OnInit {
       console.log(this.firstFormGroup.value)
       this.service.createCustomer(this.firstFormGroup.value).subscribe((res:any) =>{
         this.filePath = res.path
+        this.notification.success(
+          'Success',
+          'Succefully Added A Customer .'
+        );
+
+      },(err)=>{
+        this.notification.error(
+          'Error',
+          err
+        );
       })
 
     }

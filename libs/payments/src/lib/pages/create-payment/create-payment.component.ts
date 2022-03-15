@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { PaymentsService } from '../../service/payments.service';
 @Component({
   selector: 'insurance-create-payment',
@@ -36,7 +37,7 @@ searchText:string = ''
     e.preventDefault();
   }
 
-  constructor(private fb: FormBuilder, private service:PaymentsService) {}
+  constructor(private notification: NzNotificationService,private fb: FormBuilder, private service:PaymentsService) {}
 
   ngOnInit(): void {
 
@@ -46,6 +47,15 @@ searchText:string = ''
     console.log(this.searchText)
     this.service.getCarByRegNumber(this.searchText).subscribe((data) => {
       this.result = [data]
+      this.notification.success(
+        'Success',
+        'Succefully Retrived.'
+      );
+    },(err)=>{
+      this.notification.error(
+        'Error',
+        err
+      );
     })
 
 

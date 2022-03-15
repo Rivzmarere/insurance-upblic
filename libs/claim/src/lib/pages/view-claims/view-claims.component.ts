@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 interface Person {
   key: string;
   name: string;
@@ -34,7 +35,7 @@ export class ViewClaimsComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private notification: NzNotificationService,) { }
 
   ngOnInit(): void {
   }

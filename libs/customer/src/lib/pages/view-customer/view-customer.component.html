@@ -45,7 +45,7 @@
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
-            <nz-form-label  nzFor="gender" nzRequired>Gender</nz-form-label>
+            <nz-form-label  nzFor="gender" nzRequired>Insurance</nz-form-label>
             <nz-form-control [nzSpan]="14" nzErrorTip="Please select your gender!">
               <nz-select
                 id="gender"
@@ -61,8 +61,9 @@
 
       <ng-template #modalFooter>
         <span>Modal Footer:</span>
-        <button nz-button nzType="default" (click)="handleCancel()">Custom Callback</button>
-        <button nz-button nzType="primary" (click)="handleOk()">Custom Submit</button>
+        <button nz-button nzType="default" (click)="handleCancel()">Close</button>
+        <button *ngIf="saveButton" nz-button nzType="primary" (click)="handleOk()">Save</button>
+        <button *ngIf="updateButton" nz-button nzType="primary" (click)="update()">update</button>
       </ng-template>
     </nz-modal>
     <form nz-form [formGroup]="Form1">
@@ -130,10 +131,28 @@
           <td>{{ data.type }}</td>
           <td>{{ data.dateRegistered }}</td>
           <td>{{ data.year }}</td>
-          <td><button nz-button >Remove</button></td>
+          <td>
+            <button nzShape="circle" nz-button nz-dropdown [nzDropdownMenu]="menu">
+              <i nz-icon nzType="menu"></i>
+            </button>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item>
+                  <a  (click)="event(data._id)">Remove</a>
+                </li>
+                <li nz-menu-item>
+                  <a (click)="editCar(data._id)">Update</a>
+                </li>
+              </ul>
+            </nz-dropdown-menu>
+         </td>
+
         </tr>
       </tbody>
     </nz-table>
+    <ng-template #contentTemplate>
+
+    </ng-template>
 
 
 

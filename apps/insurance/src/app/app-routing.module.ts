@@ -45,8 +45,9 @@ const routes: Routes = [
           import('@insurance/customer').then((a) => a.CustomerModule),
       },
     ],
+    canActivate: [AuthGuard]
   },
-  { path: ' ', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth' },
 ];
 
 @NgModule({

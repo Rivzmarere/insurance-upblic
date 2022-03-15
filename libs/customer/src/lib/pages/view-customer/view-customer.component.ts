@@ -1,7 +1,10 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InsuranceService } from 'libs/add-insurance/src/lib/service/insurance.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { CustomerService } from '../../service/customer.service';
 @Component({
   selector: 'insurance-view-customer',
@@ -9,6 +12,9 @@ import { CustomerService } from '../../service/customer.service';
   styleUrls: ['./view-customer.component.scss']
 })
 export class ViewCustomerComponent implements OnInit {
+  visible: boolean = false;
+  saveButton: boolean = false
+  updateButton:boolean = false
   id: any;
   isVisible = false;
   isConfirmLoading = false;
@@ -53,10 +59,11 @@ export class ViewCustomerComponent implements OnInit {
   cars: any = [];
   currentCustomer: any;
   insurance: any;
+  selectedCar: any;
 
 
 
-  constructor(private router: ActivatedRoute,private service: CustomerService,private fb: FormBuilder,private service1: InsuranceService) {
+  constructor(private notification: NzNotificationService, private routerUrl: Router,private router: ActivatedRoute,private service: CustomerService,private fb: FormBuilder,private service1: InsuranceService) {
     this.id = this.router.snapshot.params['id'];
   }
 
@@ -71,6 +78,10 @@ export class ViewCustomerComponent implements OnInit {
   getCustomer(){
     this.service.getCustomerById(this.id).subscribe(res =>{
       this.currentCustomer = res
+      this.notification.success(
+        'Success',
+        'Succefully Retrived Customer.'
+      );
       console.log(this.currentCustomer)
       this.Form1.controls["name"].setValue( this.currentCustomer.name)
       this.Form1.controls["surname"].setValue(this.currentCustomer.surname)
@@ -81,10 +92,17 @@ export class ViewCustomerComponent implements OnInit {
       this.Form1.controls["address"].setValue(this.currentCustomer.address)
       this.Form1.controls["occupation"].setValue(this.currentCustomer.occupation)
       this.Form1.controls["email"].setValue(this.currentCustomer.email)
+    },(err)=>{
+      this.notification.error(
+        'Error',
+       err
+      );
     })
   }
   showModal(): void {
     this.Form2
+    this.saveButton = true
+    this.updateButton = false
     this.isVisible = true;
     this.getInsurances()
   }
@@ -93,11 +111,22 @@ export class ViewCustomerComponent implements OnInit {
     console.log(this.carForm.value)
     this.service.addCar(this.carForm.value).subscribe(res=>{
       console.log(res)
+      this.notification.success(
+        'Success',
+        'Succefully Added A Car.'
+      );
+    },(err)=>{
+      this.notification.error(
+        "Error",
+        err,
+
+      );
     })
   }
 
   handleCancel(): void {
     this.isVisible = false;
+    this.Form2.reset()
   }
 
   save(){
@@ -115,14 +144,82 @@ export class ViewCustomerComponent implements OnInit {
   getOwnerCars(){
     this.service.getOwnerCars(this.id).subscribe(res=>{
       this.cars = res
+      this.notification.success(
+        'Success',
+        'Succefully Added A Car.'
+      );
+
+    },(err)=>{
+      this.notification.error(
+        'Error',
+      err
+      );
     })
   }
 
   getInsurances(){
     this.service1.getAllInsurances().subscribe(res=>{
      this.insurance = res
-     console.log(this.insurance)
     })
+  }
+
+  clickMe(): void {
+    this.visible = false;
+  }
+
+  change(value: boolean): void {
+    console.log(value);
+  }
+
+  event(event:any){
+    console.log(event)
+
+  }
+
+  editCar(event:any){
+    this.selectedCar = event
+    this.isVisible = true;
+    this.saveButton = false
+    this.updateButton = true
+    this.service.getCarbyId(event).subscribe((res:any) =>{
+      console.log(res)
+      this.Form2.controls["name"].setValue(res.name)
+      this.Form2.controls["regNumber"].setValue(res.regNumber)
+      this.Form2.controls["year"].setValue(res.year)
+      this.Form2.controls["country"].setValue(res.country)
+      this.Form2.controls["dateRegistered"].setValue(res.dateRegistered)
+      this.Form2.controls["type"].setValue(res.type)
+      this.Form2.controls["insurance"].setValue(res.insurance)
+      this.notification.success(
+        'Success',
+        'Succefully Retrived Records.'
+      );
+
+
+    },(err)=>{
+      this.notification.error(
+        'Error',
+        err
+      );
+    })
+
+
+  }
+  update(){
+    this.service.updateVehcleById(this.selectedCar ,this.Form2.value).subscribe(res =>{
+      console.log(res)
+      this.notification.success(
+        'Success',
+        'Car Succefully Updated .'
+      );
+
+    }, (err)=>{
+      this.notification.error(
+        'Error',
+        err
+      );
+    })
+
   }
 
 }

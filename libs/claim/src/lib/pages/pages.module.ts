@@ -12,6 +12,7 @@ import { ClaimDetailsComponent } from './claim-details/claim-details.component';
 import { RouterModule } from '@angular/router';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,10 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
    NzDividerModule,
    NzButtonModule,
    NzModalModule,
-   RouterModule
+   RouterModule,
+  ],
+  providers:[
+    NzNotificationService
   ]
 })
 export class PagesModule { }

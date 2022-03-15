@@ -12,6 +12,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ViewCarDetailsComponent } from './view-car-details/view-car-details.component';
 import { RouterModule } from '@angular/router';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,11 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
    NzDividerModule,
    NzButtonModule,
    RouterModule,
-   NzModalModule
+   NzModalModule,
+  ],
+  providers:[
+    NzNotificationService
+
   ]
 })
 export class PagesModule { }

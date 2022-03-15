@@ -9,6 +9,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 
 @NgModule({
@@ -25,7 +26,10 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzTableModule,
     FormsModule,
     NzDividerModule,
-    NzButtonModule
+    NzButtonModule,
+  ],
+  providers:[
+    NzNotificationService
   ]
 })
 export class PagesModule { }

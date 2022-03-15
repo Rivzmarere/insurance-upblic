@@ -1,24 +1,41 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+export interface PasswordResetRequest {
+  phoneNumber: string;
+  password: string;
+  token: string;
+}
+
+@Injectable()
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
+
+  public login(body:any): Observable<any> {
 
 
-  createCustomer(BeneficiaryDetails: any) {
-    return this.http.post(
-      `http://localhost:1000/`,
-      BeneficiaryDetails
+    const headers = new HttpHeaders().append(
+      'Content-Type',
+      'application/json;'
     );
+
+    return this.http
+      .post<any>(`http://localhost:1000/login`,body)
+      .pipe(
+        map((response) => {
+          console.log(response)
+          return response
+        })
+      );
   }
-  getAllCustomers() {
-    return this.http.get(`http://localhost:1000/`);
-  }
-  getCustomerById() {
-    return this.http.get(`http://localhost:1000/`);
-  }
+
+
 }

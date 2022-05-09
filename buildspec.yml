@@ -19,6 +19,6 @@ phases:
         - ng build
 artifacts:
     files:
-        - 'dist/apps/insurance/*'
-    base-directory: 'dist/apps/insurance/*'
+        - '**/*'
+    base-directory: 'dist/apps/insurance/'
     discard-paths: yes

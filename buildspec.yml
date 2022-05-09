@@ -4,7 +4,7 @@ env:
     variables:
         CACHE_CONTROL: "86400"
         S3_BUCKET: "{{s3_bucket_url}}"
-        BUILD_FOLDER: "dist/apps/insurance"
+        BUILD_FOLDER: "dist"
 phases:
   install:
     runtime-versions:
@@ -12,9 +12,9 @@ phases:
     commands:
         - echo Installing source NPM dependencies...
         - npm install
-        - npm install -g @angular/cli@latest
+        - npm install -g @angular/cli
 artifacts:
     files:
         - '**/*'
-    base-directory: 'dist/apps/insurance/'
+    base-directory: 'dist*'
     discard-paths: yes

@@ -10,14 +10,14 @@ export class ClaimService {
 
   createClaim(BeneficiaryDetails: any) {
     return this.http.post(
-      `http://localhost:1000/`,
+      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/`,
       BeneficiaryDetails
     );
   }
   getAllClaims() {
-    return this.http.get(`http://localhost:1000/`);
+    return this.http.get(`http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/`);
   }
   getClaimsById() {
-    return this.http.get(`http://localhost:1000/`);
+    return this.http.get(`http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/`);
   }
 }

@@ -28,7 +28,7 @@ export class AuthService {
     );
 
     return this.http
-      .post<any>(`http://localhost:1000/login`,body)
+      .post<any>(`http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/login`,body)
       .pipe(
         map((response) => {
           console.log(response)

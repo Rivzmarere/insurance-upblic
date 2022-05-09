@@ -10,45 +10,45 @@ export class CustomerService {
 
   createCustomer(BeneficiaryDetails: any) {
     return this.http.post(
-      `http://localhost:1000/customer/post-customer`,
+      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/customer/post-customer`,
       BeneficiaryDetails
     );
   }
 
   addCar(BeneficiaryDetails: any) {
     return this.http.post(
-      `http://localhost:1000/car/add-car`,
+      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/car/add-car`,
       BeneficiaryDetails
     );
   }
 
   getOwnerCars(OwnerId: any) {
     return this.http.get(
-      `http://localhost:1000/car/get-car-by-owner-id/${OwnerId}`
+      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/car/get-car-by-owner-id/${OwnerId}`
     );
   }
   getCarbyId(CarId: any) {
     return this.http.get(
-      `http://localhost:1000/car/get-car-by-id/${CarId}`
+      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/car/get-car-by-id/${CarId}`
     );
   }
   uploadImage(BeneficiaryDetails: any) {
     return this.http.post(
-      `http://localhost:1000/file`,
+      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/file`,
       BeneficiaryDetails
     );
   }
   updateVehcleById(id:any ,BeneficiaryDetails: any) {
     return this.http.put(
-      `http://localhost:1000/car/update-car/${id}`,
+      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/car/update-car/${id}`,
       BeneficiaryDetails
     );
   }
   getAllCustomers() {
-    return this.http.get(`http://localhost:1000/customer/get-all-customers`);
+    return this.http.get(`http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/customer/get-all-customers`);
   }
   getCustomerById(id:any) {
-    return this.http.get(`http://localhost:1000/customer/get-customer-by/${id}`);
+    return this.http.get(`http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/customer/get-customer-by/${id}`);
   }
 
 

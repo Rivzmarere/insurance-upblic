@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'insurance-dashboard',
   templateUrl: './dashboard.component.html',

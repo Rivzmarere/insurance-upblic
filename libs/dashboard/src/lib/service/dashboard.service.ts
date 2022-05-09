@@ -9,6 +9,6 @@ export class DashboardService {
   constructor(private http: HttpClient) { }
 
   getAllPayments() {
-    return this.http.get(`http://localhost:1000/`);
+    return this.http.get(`http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/`);
   }
 }

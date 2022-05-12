@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinsurance=self.webpackChunkinsurance||[]).push([[700],{3700:(l,n,e)=>{e.r(n),e.d(n,{ReportsModule:()=>t});var u=e(9808),s=e(5e3);let t=(()=>{class o{}return o.\u0275fac=function(c){return new(c||o)},o.\u0275mod=s.oAB({type:o}),o.\u0275inj=s.cJS({imports:[[u.ez]]}),o})()}}]);

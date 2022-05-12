@@ -1,18 +1,21 @@
 <div style="background: #ECECEC;padding:30px;">
   <div nz-row [nzGutter]="8">
     <div nz-col [nzSpan]="8">
-      <nz-card nzTitle="Card title">
-        <p>Card content</p>
+      <nz-card >
+        <h5>Number of Claims</h5>
+        <h6> {{this.claims.length}}</h6>
       </nz-card>
     </div>
     <div nz-col [nzSpan]="8">
-      <nz-card nzTitle="Card title">
-        <p>Card content</p>
+      <nz-card >
+        <h5>Number of Payments</h5>
+        <h6>{{this.payments.length}}</h6>
       </nz-card>
     </div>
     <div nz-col [nzSpan]="8">
-      <nz-card nzTitle="Card title">
-        <p>Card content</p>
+      <nz-card >
+        <h5>Number of Customers</h5>
+       <h6>{{this.customers.length}}</h6>
       </nz-card>
     </div>
   </div>

@@ -4,10 +4,10 @@
       <img src="assets/logo.png">
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <!-- <li nz-menu-item routerLink="dashboard">
+      <li nz-menu-item routerLink="dashboard">
         <i nz-icon nzType="file"></i>
         <span>Dashboard</span>
-      </li> -->
+      </li>
       <li nz-submenu nzTitle="Customers" nzIcon="appstore">
         <ul>
           <li nz-menu-item routerLink="customer/create-customer">
@@ -58,14 +58,22 @@
           </li>
         </ul>
       </li>
-      <!-- <li nz-submenu nzTitle="Parametrs" nzIcon="appstore">
+      <li nz-submenu nzTitle="Reports" nzIcon="appstore">
         <ul>
-          <li nz-menu-item>
+          <li nz-menu-item routerLink="reports/customers">
             <i nz-icon nzType="file"></i>
-            <span>Roles</span>
+            <span>Customer Reports</span>
+          </li>
+          <li nz-menu-item routerLink="reports/payments">
+            <i nz-icon nzType="file"></i>
+            <span>Payments Reports</span>
+          </li>
+          <li nz-menu-item routerLink="reports/claims">
+            <i nz-icon nzType="file"></i>
+            <span>Claim Reports</span>
           </li>
         </ul>
-      </li> -->
+      </li>
 
     </ul>
   </nz-sider>

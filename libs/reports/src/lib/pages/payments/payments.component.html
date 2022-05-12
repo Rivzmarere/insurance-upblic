@@ -1,0 +1,40 @@
+<button nz-button [nzType]="'primary'"(click)="openPDF()"
+><span>Download Report</span></button>
+
+
+
+<div class="col-md-8" id="htmlData">
+<insurance-details
+[Title]=" 'Payments Report'"
+
+
+>
+
+</insurance-details>
+
+
+
+  <nz-table #basicTable >
+    <thead>
+      <tr>
+        <th>Car Name</th>
+        <th>Amount</th>
+        <th>Owner Id</th>
+        <th>Payment Method</th>
+        <th>Date of Payment<th>
+        <th>Reference Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of payments">
+        <td>{{ data.name }}</td>
+        <td>{{ data.amount }}</td>
+        <td>{{ data.ownerId }}</td>
+        <td>{{ data.paymentMethod }}</td>
+        <td>{{data.date}}</td>
+        <td>{{ data._id }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+</div>

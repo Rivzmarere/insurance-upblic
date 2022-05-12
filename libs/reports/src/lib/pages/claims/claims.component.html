@@ -1,0 +1,48 @@
+<button nz-button [nzType]="'primary'"(click)="openPDF()"
+><span>Download Report</span></button>
+
+
+<div class="col-md-8" id="htmlData">
+
+  <insurance-details
+[Title]=" 'Claim Report'"
+
+
+>
+
+</insurance-details>
+<nz-table #basicTable>
+<thead>
+  <tr>
+    <th>Owner Name</th>
+    <th>Owner Surname</th>
+    <th>Car Name</th>
+    <th>Date Claimed</th>
+    <th>Reference</th>
+    <th>Status</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let data of claims">
+    <td>{{ data.name }}</td>
+    <td>{{ data.surname }}</td>
+    <td>{{ data.carName }}</td>
+    <td>{{ data.date }}</td>
+    <td>{{ data._id }}</td>
+    <td>{{ data.status }}</td>
+  </tr>
+</tbody>
+</nz-table>
+</div>
+
+
+
+<!-- carName: "vitz"
+date: "2022-5-12"
+name: "admin"
+ownerId: "627a42b2a2b6861d9bce44ac"
+status: "Pending"
+surname: "password"
+vehcleId: "627d4ebaf56e39084918fe8b"
+__v: 0
+_id: "627d5aa61b40b55996770ace" -->

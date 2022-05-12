@@ -45,7 +45,7 @@ const routes: Routes = [
           import('@insurance/customer').then((a) => a.CustomerModule),
       },
     ],
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: 'auth' },
 ];

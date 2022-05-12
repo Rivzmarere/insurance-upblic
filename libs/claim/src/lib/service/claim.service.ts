@@ -10,12 +10,12 @@ export class ClaimService {
 
   createClaim(BeneficiaryDetails: any) {
     return this.http.post(
-      `https://hit200node.herokuapp.com/login/claim/post-claim`,
+      `https://hit200node.herokuapp.com/claim/post-claim`,
       BeneficiaryDetails
     );
   }
   getAllClaims() {
-    return this.http.get(`https://hit200node.herokuapp.com/login/claim/view-all-claims`);
+    return this.http.get(`https://hit200node.herokuapp.com/claim/view-all-claims`);
   }
   getClaimsById() {
     return this.http.get(`https://hit200node.herokuapp.com/`);
@@ -23,7 +23,7 @@ export class ClaimService {
 
   updateClaim(BeneficiaryDetails: any, id:any) {
     return this.http.put(
-      `https://hit200node.herokuapp.com/login/claim/update-claim/${id}`,
+      `https://hit200node.herokuapp.com/claim/update-claim/${id}`,
       BeneficiaryDetails
     );
   }

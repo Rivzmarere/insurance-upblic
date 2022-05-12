@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { CustomerService } from 'libs/customer/src/lib/service/customer.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { PaymentsService } from '../../../../../payments/src/lib/service/payments.service';
+import { ClaimService } from '../../service/claim.service';
 
 @Component({
   selector: 'insurance-claim-details',
@@ -32,27 +34,27 @@ export class ClaimDetailsComponent implements OnInit {
 
   paymentForm: FormGroup = this.fb.group({
     name: [{value:'', disabled: true}, [Validators.required]],
+    surname: [{value:'', disabled: true}, [Validators.required]],
+    carName: [{value:'', disabled: true}, [Validators.required]],
     insurance: [{value:'', disabled:true}, [Validators.required]],
-    amount: [{value:'', disabled:true}, [Validators.required]],
-    paymentMethod: [{value:'',}, [Validators.required]],
     ownerId: [{value:'', disabled:true}, [Validators.required]],
     vechleId: [{value:'',disabled:true}, [Validators.required]],
 
   });
   paymentSubmitForm: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
-    insurance: ['', [Validators.required]],
-    amount: ['', [Validators.required]],
-    paymentMethod: ['', [Validators.required]],
+    surname: ['', [Validators.required]],
     ownerId: ['', [Validators.required]],
     vechleId: ['', [Validators.required]],
+    carName: ['', [Validators.required]],
 
   });
   carDetails: any;
   period: any;
+  currentCustomer: any;
 
 
-  constructor(private notification: NzNotificationService,private router: ActivatedRoute,private service: PaymentsService,private fb: FormBuilder) {
+  constructor(private notification: NzNotificationService,private router: ActivatedRoute,private service: PaymentsService,private fb: FormBuilder,private customerService:CustomerService,private ClaimService: ClaimService) {
     this.id = this.router.snapshot.params['id']
    }
 
@@ -77,9 +79,24 @@ export class ClaimDetailsComponent implements OnInit {
 
   }
 
+  getCustomer(data:any){
+    this.customerService.getCustomerById(data).subscribe((res:any) =>{
+      this.currentCustomer = res
+      this.paymentForm.controls["surname"].setValue(this.currentCustomer.surname)
+      this.paymentForm.controls["name"].setValue(res.name)
+
+    },(err)=>{
+      this.notification.error(
+        'Error',
+       err
+      );
+    })
+  }
+
 
   showDetails(details:any){
     console.log(details)
+    this.getCustomer(details.ownerId)
     this.Form2.controls["name"].setValue(details.name)
       this.Form2.controls["regNumber"].setValue(details.regNumber)
       this.Form2.controls["year"].setValue(details.year)
@@ -88,7 +105,6 @@ export class ClaimDetailsComponent implements OnInit {
       this.Form2.controls["type"].setValue(details.type)
       this.Form2.controls["insurance"].setValue(details.insurance)
       this.service.getInsuranceByName(details.insurance).subscribe((res:any) =>{
-        this.paymentForm.controls["amount"].setValue(res.amount)
         this.period = res.period
 
        })
@@ -97,23 +113,22 @@ export class ClaimDetailsComponent implements OnInit {
 
   showModal(): void {
     this.isVisible = true;
-    this.paymentForm.controls["name"].setValue(this.Form2.value.name)
+    this.paymentForm.controls["carName"].setValue(this.Form2.value.name)
       this.paymentForm.controls["insurance"].setValue(this.Form2.value.insurance)
 
   }
 
   handleOk(): void {
-
+    this.paymentSubmitForm.controls["carName"].setValue(this.paymentForm.value.carName)
       this.paymentSubmitForm.controls["name"].setValue(this.paymentForm.value.name)
-      this.paymentSubmitForm.controls["insurance"].setValue(this.paymentForm.value.insurance)
-      this.paymentSubmitForm.controls["amount"].setValue(this.paymentForm.value.amount)
+      this.paymentSubmitForm.controls["surname"].setValue(this.paymentForm.value.surname)
       this.paymentSubmitForm.controls["ownerId"].setValue(this.paymentForm.value.ownerId)
       this.paymentSubmitForm.controls["vechleId"].setValue(this.paymentForm.value.vechleId)
-      this.service.createPayment(this.paymentForm.getRawValue()).subscribe(res=>{
+      this.ClaimService.createClaim(this.paymentSubmitForm.getRawValue()).subscribe(res=>{
         console.log(res)
         this.notification.success(
           'Success',
-          'Succefully Retrived Customer.'
+          'Claim Created Succefully.'
         );
       },(err)=>{
         this.notification.error(
@@ -132,12 +147,14 @@ export class ClaimDetailsComponent implements OnInit {
   }
 
   getPaymentsByCarID(){
-    this.service.getPaymentsByCarID(this.id).subscribe(res=>{
+    this.service.getPaymentsByCarID(this.id).subscribe((res:any) =>{
       this.cars = res
+      console.log(res)
       this.notification.success(
         'Success',
         'Succefully Retrived Payments.'
       );
+
     },(err)=>{
       this.notification.error(
         'Error',

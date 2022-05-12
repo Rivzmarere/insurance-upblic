@@ -115,6 +115,9 @@ export class ViewCustomerComponent implements OnInit {
         'Success',
         'Succefully Added A Car.'
       );
+      this.isVisible = false;
+      this.getCustomer()
+      this.getOwnerCars()
     },(err)=>{
       this.notification.error(
         "Error",

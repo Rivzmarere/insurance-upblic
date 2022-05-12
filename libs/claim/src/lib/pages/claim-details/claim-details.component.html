@@ -37,40 +37,31 @@
   </form>
 
   <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Process Claim</span></button>
-      <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <nz-modal [(nzVisible)]="isVisible" nzTitle="Make Claim" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
         <ng-container *nzModalContent>
           <form nz-form [formGroup]="paymentForm">
             <nz-form-item>
-              <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Name </nz-form-label>
+              <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email"> Name </nz-form-label>
               <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
                 <input nz-input formControlName="name"  />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Surname</nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                <input nz-input formControlName="surname"  />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Car Name </nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                <input nz-input formControlName="carName"  />
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
               <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="City">Insurance Cover</nz-form-label>
               <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
                 <input nz-input formControlName="insurance"     />
-              </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-              <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="City">Amount</nz-form-label>
-              <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
-                <input nz-input formControlName="amount"     />
-              </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-              <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="City">Select Payment</nz-form-label>
-              <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
-                <nz-select
-                  id="gender"
-                  formControlName="paymentMethod"
-                  nzPlaceHolder="Select Payment Method"
-                >
-                  <nz-option   nzValue="Ecocash" nzLabel="Ecocash"> </nz-option>
-                  <nz-option  nzValue="One-Money" nzLabel="One-Money"> </nz-option>
-                  <nz-option  nzValue="Telecash" nzLabel="Telecash"> </nz-option>
-                  <nz-option  nzValue="Swipe" nzLabel="Swipe"> </nz-option>
-                </nz-select>
               </nz-form-control>
             </nz-form-item>
           </form>

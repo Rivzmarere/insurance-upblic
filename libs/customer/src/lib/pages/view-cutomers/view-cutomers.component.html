@@ -1,6 +1,7 @@
 <nz-table #basicTable [nzData]="listOfData">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Name</th>
       <th>Surname</th>
       <th>ID Number</th>
@@ -11,6 +12,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of data" routerLink='/customer/view-customer/{{data._id}}'>
+      <td>{{ data._id }}</td>
       <td>{{ data.name }}</td>
       <td>{{ data.surname }}</td>
       <td>{{ data.idNumber }}</td>

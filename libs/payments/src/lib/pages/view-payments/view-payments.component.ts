@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentsService } from '../../service/payments.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 interface Person {
   key: string;
@@ -13,7 +14,7 @@ interface Person {
   styleUrls: ['./view-payments.component.scss']
 })
 export class ViewPaymentsComponent implements OnInit {
-
+  data:any= []
 
   listOfData: Person[] = [
     {
@@ -36,10 +37,31 @@ export class ViewPaymentsComponent implements OnInit {
     }
   ];
 
-
-  constructor(private notification: NzNotificationService,) { }
+  constructor(private notification: NzNotificationService,private service: PaymentsService) { }
 
   ngOnInit(): void {
+    this.getCustomers()
+  }
+
+
+  getCustomers(){
+    this.service.getAllPayments().subscribe(res=>{
+     this.data = res
+     this.notification.success(
+      'Success',
+      'Succefully Retrived Customers.'
+    );
+    },
+    (err)=>{
+      this.notification.error(
+        'Error',
+       err
+      );
+    })
+  }
+
+  getUser(event:any){
+    console.log(event)
   }
 
 }

@@ -16,7 +16,7 @@ export class PaymentsService {
     );
   }
   getAllPayments() {
-    return this.http.get(`https://hit200node.herokuapp.com/payment/view-all-payements`);
+    return this.http.get(`https://hit200node.herokuapp.com/payment/view-all-payments`);
   }
 
   getCarByRegNumber(regNumber: any) {

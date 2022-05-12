@@ -14,6 +14,7 @@ import { AuthService } from '../../service/auth.service';
 })
 export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
+  isLoadingOne = false;
   private _error = new Subject<string>();
   private _processing = new BehaviorSubject<boolean>(false);
   public error$ = this._error.asObservable();
@@ -56,6 +57,7 @@ export class LoginComponent implements OnInit {
     this._processing.complete();
   }
   async submit() {
+    this.isLoadingOne = true
     try {
       this._processing.next(true);
       const result = await this.authService
@@ -64,7 +66,9 @@ export class LoginComponent implements OnInit {
         console.log(result)
 
       this.processToken(result.token);
+      this.isLoadingOne = false
     } catch (error) {
+      this.isLoadingOne = false
       this.validateForm.patchValue({ password: null });
       if (error instanceof HttpErrorResponse) {
         if (error.status === 404) {
@@ -89,7 +93,7 @@ export class LoginComponent implements OnInit {
   processToken(token: string) {
     console.log(token)
     this.tokenService.setToken(token);
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/customer/view-customers']);
   }
 
 }

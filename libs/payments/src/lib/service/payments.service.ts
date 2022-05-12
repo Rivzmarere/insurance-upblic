@@ -11,34 +11,34 @@ export class PaymentsService {
 
   createPayment(BeneficiaryDetails: any) {
     return this.http.post(
-      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/payment/post-payment`,
+      `https://hit200node.herokuapp.com/payment/post-payment`,
       BeneficiaryDetails
     );
   }
   getAllPayments() {
-    return this.http.get(`http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/payment/view-all-payements`);
+    return this.http.get(`https://hit200node.herokuapp.com/payment/view-all-payements`);
   }
 
   getCarByRegNumber(regNumber: any) {
     return this.http.get(
-      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/car/get-car-by-regNumber/${regNumber}`
+      `https://hit200node.herokuapp.com/car/get-car-by-regNumber/${regNumber}`
     );
   }
   getPaymentsByCarID(carId: any) {
     return this.http.get(
-      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/payment/get-payment-by-vehcleId/${carId}`
+      `https://hit200node.herokuapp.com/payment/get-payment-by-vehcleId/${carId}`
     );
   }
 
   getInsuranceByName(name: any) {
     return this.http.get(
-      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/insurance/get-insurance-by-name/${name}`
+      `https://hit200node.herokuapp.com/insurance/get-insurance-by-name/${name}`
     );
   }
 
   getCarById(id: any) {
     return this.http.get(
-      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/car/get-car-by-id/${id}`
+      `https://hit200node.herokuapp.com/car/get-car-by-id/${id}`
     );
   }
 }

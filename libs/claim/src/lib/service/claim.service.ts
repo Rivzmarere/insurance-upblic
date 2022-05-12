@@ -10,14 +10,14 @@ export class ClaimService {
 
   createClaim(BeneficiaryDetails: any) {
     return this.http.post(
-      `http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/`,
+      `https://hit200node.herokuapp.com/`,
       BeneficiaryDetails
     );
   }
   getAllClaims() {
-    return this.http.get(`http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/`);
+    return this.http.get(`https://hit200node.herokuapp.com/`);
   }
   getClaimsById() {
-    return this.http.get(`http://hit200node-env.eba-arzr3fni.us-east-1.elasticbeanstalk.com/`);
+    return this.http.get(`https://hit200node.herokuapp.com/`);
   }
 }
